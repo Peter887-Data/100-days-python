@@ -16,6 +16,8 @@ class Money:
   def __hash__(self) -> int:
     return self.value.__hash__() + 7 * self.currency.__hash__()
     
+  def __round__(self, ndigits=None):
+    return Money(round(self.value, ndigits), self.currency)
 
 dollar1 = Money(100.0, "Dollar")
 dollar2 = Money(100.0, "Dollar")
@@ -27,3 +29,5 @@ dollars = {
 }
 
 print(dollars.get(Money(100.0, "Euro")))
+
+print(round(Money(100.63, "Euro")))
