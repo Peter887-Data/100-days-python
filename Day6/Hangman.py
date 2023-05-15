@@ -6,6 +6,14 @@ def input_letter():
     return letter
 
 
+def guessed_letter(guessed_word, word, letter):
+    pos = word.find(letter)
+    while pos >= 0:
+        guessed_word = guessed_word[:pos] + letter + guessed_word[pos + 1:]
+        pos = word.find(letter, pos + 1)
+    return guessed_word
+
+
 if __name__ == "__main__":
     word = "peer"
     guessed_word = "_"*len(word)
@@ -14,10 +22,7 @@ if __name__ == "__main__":
     while True:
         letter = input_letter()
         if letter in word:
-            pos = word.find(letter)
-            while pos >= 0:
-                guessed_word = guessed_word[:pos] + letter + guessed_word[pos +1:]
-                pos = word.find(letter, pos+1)
+            guessed_word = guessed_letter(guessed_word, word, letter)
             print(guessed_word)
             if guessed_word == word:
                 print("won")
