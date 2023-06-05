@@ -28,3 +28,4 @@ while add_bidder:
 max_bidder = max(bidders, key=bidders.get)
 max_value = bidders[max_bidder]
 print(f"{max_bidder} gets the auction for {max_value}$")
+
